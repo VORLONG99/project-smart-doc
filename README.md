@@ -12,22 +12,22 @@ Automatically scans your entire codebase to generate a comprehensive `project_ov
 
 - **Trigger**: First use or explicit request (e.g., "Initialize docs", "Analyze project").
 - **What it does**:
-    - **Architecture Detection**: Identifies project type (React, Node.js, etc.) and entry points.
-    - **Dependency Analysis**: Lists core tech stack and versions from package files.
-    - **Environment Check**: Summarizes configuration needs from `.env` and config files.
-    - **Hidden Knowledge Mining**: Aggregates `TODO`, `FIXME`, `HACK`, and `NOTE` comments to expose technical debt and complex logic.
+  - **Architecture Detection**: Identifies project type (React, Node.js, etc.) and entry points.
+  - **Dependency Analysis**: Lists core tech stack and versions from package files.
+  - **Environment Check**: Summarizes configuration needs from `.env` and config files.
+  - **Hidden Knowledge Mining**: Aggregates `TODO`, `FIXME`, `HACK`, and `NOTE` comments to expose technical debt and complex logic.
 
 ### 2. Smart Capture & Dynamic Update
 
 Actively listens to your conversations to capture and record critical business logic and caveats.
 
 - **Trigger**:
-    - **Explicit**: Keywords like "pay attention to", "note that", "crucial point".
-    - **Implicit**: When you explain complex logic or correct the AI's understanding.
+  - **Explicit**: Keywords like "pay attention to", "note that", "crucial point".
+  - **Implicit**: When you explain complex logic or correct the AI's understanding.
 - **What it does**:
-    - Updates `doc/attention_points.md` with new findings.
-    - **Strict Separation**: Ensures business logic is kept separate from commit logs.
-    - **Contextual**: Links notes to specific code modules where applicable.
+  - Updates `doc/attention_points.md` with new findings.
+  - **Strict Separation**: Ensures business logic is kept separate from commit logs.
+  - **Contextual**: Links notes to specific code modules where applicable.
 
 ### 3. Smart Commit Overview
 
@@ -35,19 +35,42 @@ Generates structured summaries for significant code changes.
 
 - **Trigger**: Large commits (>100 lines or >3 files) or explicit request.
 - **What it does**:
-    - Updates `doc/commit_history.md`.
-    - **Structured Log**: categorization by type (Feature/Fix/Refactor).
-    - **Impact Analysis**: Lists affected modules and potential risks.
+  - Updates `doc/commit_history.md`.
+  - **Structured Log**: categorization by type (Feature/Fix/Refactor).
+  - **Impact Analysis**: Lists affected modules and potential risks.
+
+### 4. Deep Logic & Algorithm Analysis
+
+Digs deep into the "why" and "how" of complex implementations.
+
+- **Trigger**: Requesting analysis of core logic, or when AI encounters unconventional patterns (monkey patches, complex regex, custom middleware).
+- **What it does**:
+  - Creates `doc/core_logic.md`.
+  - Explains **rationale**, **edge cases**, and **side effects**.
+  - Visualizes implementation mechanisms (via text descriptions/pseudocode).
+
+### 5. Migration & Refactoring Assistant
+
+Guides you through large-scale changes and keeps track of the plan.
+
+- **Trigger**: Keywords like "migration", "refactoring", "upgrade", "switching DB".
+- **What it does**:
+  - Creates `doc/migration_guide.md` or `doc/refactoring_notes.md`.
+  - **Gap Analysis**: Compares current vs. target state.
+  - **Risk Assessment**: Identifies compatibility issues and data migration risks.
+  - **Action Plan**: Generates step-by-step execution guides.
 
 ## Documentation Structure
 
 The skill maintains a `doc/` directory with a clean, separated structure:
 
-| File | Purpose |
-|------|---------|
+| File                  | Purpose                                                                             |
+| --------------------- | ----------------------------------------------------------------------------------- |
 | `project_overview.md` | Macro-level project view, architecture, tech stack, and **technical debt summary**. |
-| `attention_points.md` | **Dynamic** business logic, pitfalls, and special configuration notes. |
-| `commit_history.md` | Structured log of major code changes and version iterations. |
+| `attention_points.md` | **Dynamic** business logic, pitfalls, and special configuration notes.              |
+| `commit_history.md`   | Structured log of major code changes and version iterations.                        |
+| `core_logic.md`       | Deep dive into complex algorithms, hacks, and unconventional implementations.       |
+| `migration_guide.md`  | Roadmap and checklist for large-scale refactoring or technology migration.          |
 
 ## Installation
 
