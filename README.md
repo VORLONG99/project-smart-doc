@@ -60,6 +60,16 @@ Guides you through large-scale changes and keeps track of the plan.
   - **Risk Assessment**: Identifies compatibility issues and data migration risks.
   - **Action Plan**: Generates step-by-step execution guides.
 
+### 6. Self-Evolution & Upgrade
+
+Capable of modifying its own rules to better suit your workflow.
+
+- **Trigger**: Direct requests like "Upgrade this skill", "Add a rule to docs", or repeated corrections of its behavior.
+- **What it does**:
+  - Analyzes your request to understand what behavior needs changing.
+  - **Self-Modifies**: Edits its own `SKILL.md` file in `.trae/skills/` to permanently adopt the new rule.
+  - **Logs**: Records the upgrade in the skill definition for transparency.
+
 ## Documentation Structure
 
 The skill maintains a `doc/` directory with a clean, separated structure:
@@ -76,3 +86,14 @@ The skill maintains a `doc/` directory with a clean, separated structure:
 
 1. Copy the `project-smart-doc` folder to your project's `.trae/skills/` directory.
 2. The skill will automatically activate based on the triggers described above.
+
+## How to View Evolution Logs
+
+You can check the self-evolution history of this skill by viewing the bottom of the `SKILL.md` file.
+
+```bash
+# View the evolution log
+tail -n 20 .trae/skills/project-smart-doc/SKILL.md
+```
+
+Or simply ask me: "Show me the skill evolution log."
